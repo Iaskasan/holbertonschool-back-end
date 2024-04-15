@@ -9,7 +9,8 @@ if __name__ == "__main__":
     response = requests.get(url)
     data = response.json()
     name = data.get("name")
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(sys.argv[1])
+    url = "https://jsonplaceholder.typicode.com/todos?userId={}"\
+        .format(sys.argv[1])
     response = requests.get(url)
     data = response.json()
     total = len(data)
@@ -20,4 +21,5 @@ if __name__ == "__main__":
             print("\t {}".format(task.get("title")))
     with open("{}.csv".format(sys.argv[1]), "w") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        [writer.writerow([sys.argv[1], name, task.get("completed"), task.get("title")]) for task in data]
+        [writer.writerow([sys.argv[1], name, task.get("completed"),
+                          task.get("title")]) for task in data]

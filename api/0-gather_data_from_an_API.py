@@ -8,7 +8,8 @@ if __name__ == "__main__":
     response = requests.get(url)
     data = response.json()
     name = data.get("name")
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(sys.argv[1])
+    url = "https://jsonplaceholder.typicode.com/todos?userId={}"\
+        .format(sys.argv[1])
     response = requests.get(url)
     data = response.json()
     total = len(data)
@@ -17,4 +18,3 @@ if __name__ == "__main__":
     for task in data:
         if task.get("completed"):
             print("\t {}".format(task.get("title")))
-            
